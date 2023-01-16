@@ -1,0 +1,56 @@
+[1mdiff --git a/functional_tests.py b/functional_tests.py[m
+[1mindex 6de194f..e60b620 100644[m
+[1m--- a/functional_tests.py[m
+[1m+++ b/functional_tests.py[m
+[36m@@ -1,6 +1,48 @@[m
+ from selenium import webdriver[m
+[32m+[m[32mimport unittest[m
+ [m
+[31m-browser = webdriver.Chrome()[m
+[31m-browser.get('http://localhost:8000')[m
+ [m
+[31m-assert 'Django' in browser.title[m
+[32m+[m[32mclass NewVisitorTest(unittest.TestCase):[m
+[32m+[m[32m    def setUp(self):[m
+[32m+[m[32m        self.browser = webdriver.Chrome()[m
+[32m+[m
+[32m+[m[32m    def tearDown(self):[m
+[32m+[m[32m        self.browser.quit()[m
+[32m+[m
+[32m+[m[32m    def test_can_start_a_list_and_retrieve_it_later(self):[m
+[32m+[m[32m        # Edith has heard about a cool new online to-do app. She goes[m
+[32m+[m[32m        # to check out its homepage[m
+[32m+[m[32m        self.browser.get('http://localhost:8000')[m
+[32m+[m
+[32m+[m[32m        # She notices the page title and header mention to-do lists[m
+[32m+[m
+[32m+[m[32m        # assert 'To-Do' in browser.title, "Browser title was " + browser.title[m
+[32m+[m
+[32m+[m[32m        self.assertIn('To-Do', self.browser.title)[m
+[32m+[m[32m        self.fail('Finish the test!')[m
+[32m+[m
+[32m+[m[32m        # She is invited to enter a to-do item straight away[m
+[32m+[m
+[32m+[m[32m        # She types "Buy peacock feathers" into a text box (Edith's hobby[m
+[32m+[m[32m        # is tying fly-fishing lures)[m
+[32m+[m
+[32m+[m[32m        # When she hits enter, the page updates, and now the page lists[m
+[32m+[m[32m        # "1: Buy peacock feathers" as an item in a to-do list[m
+[32m+[m
+[32m+[m[32m        # There is still a text box inviting her to add another item. She[m
+[32m+[m[32m        # enters "Use peacock feathers to make a fly" (Edith is very[m
+[32m+[m[32m        # methodical)[m
+[32m+[m
+[32m+[m[32m        # The page updates again, and now shows both items on her list[m
+[32m+[m
+[32m+[m[32m        # Edith wonders whether the site will remember her list. Then she[m
+[32m+[m[32m        # sees that the site has generated a unique URL for her -- there[m
+[32m+[m[32m        # is some explanatory text to that effect.[m
+[32m+[m
+[32m+[m[32m        # She visits that URL - her to-do list is still there.[m
+[32m+[m
+[32m+[m[32m        # Satisfied, she goes back to sleep[m
+[32m+[m
+[32m+[m
+[32m+[m[32mif __name__ == '__main__':[m
+[32m+[m[32m    unittest.main(warnings='ignore')[m
